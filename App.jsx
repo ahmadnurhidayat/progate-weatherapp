@@ -1,10 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, TextInput } from "react-native";
+import { StyleSheet, View } from "react-native";
 import WeatherSearch from "./components/WeatherSearch";
 import WeatherInfo from "./components/WeatherInfo";
 import axios from "axios";
 import { API_KEY, BASE_URL } from "./constant";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function App() {
   const [weatherData, setWeatherData] = useState();
@@ -24,11 +24,20 @@ export default function App() {
       .catch((err) => console.error("gagal cur", err));
   }
 
+  console.log(weatherData);
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <WeatherSearch searchWeather={handleSearch} />
-      <WeatherInfo />
+      <WeatherInfo
+        name={weatherData?.name}
+        temp={weatherData?.main?.temp}
+        weatherDesc={weatherData?.weather[0]?.description}
+        icon={weatherData?.weather[0]?.icon}
+        visibility={weatherData?.visibility}
+        windSpeed={weatherData?.wind.speed}
+      />
     </View>
   );
 }
