@@ -11,29 +11,29 @@ export default function App() {
   const [status, setStatus] = useState();
 
   // handle seacrh with promise
-  // function handleSearch(location) {
-  //   if (location === "") return;
+  function handleSearch(location) {
+    if (location === "") return;
 
-  //   setStatus("loading");
-  //   axios
-  //     .get(`${BASE_URL}?q=${location}&appid=${API_KEY}`)
-  //     .then((res) => {
-  //       const data = res.data;
-  //       data.visibility /= 1000;
-  //       data.visibility = data.visibility.toFixed(2);
-  //       data.main.temp -= 273.15;
-  //       data.main.temp = data.main.temp.toFixed(2);
+    setStatus("loading");
+    axios
+      .get(`${BASE_URL}?q=${location}&appid=${API_KEY}`)
+      .then((res) => {
+        const data = res.data;
+        data.visibility /= 1000;
+        data.visibility = data.visibility.toFixed(2);
+        data.main.temp -= 273.15;
+        data.main.temp = data.main.temp.toFixed(2);
 
-  //       setWeatherData(data);
-  //       setStatus("success");
-  //     })
-  //     .catch((err) => {
-  //       setStatus("error");
-  //       console.error("gagal cur", err);
-  //     });
-  // }
+        setWeatherData(data);
+        setStatus("success");
+      })
+      .catch((err) => {
+        setStatus("error");
+        console.error("gagal cur", err);
+      });
+  }
 
-  // handle seacrh with promise
+  // handle seacrh with axios
   const handleSearch = async (location) => {
     setStatus("loading");
     try {
