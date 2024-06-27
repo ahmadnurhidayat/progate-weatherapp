@@ -14,7 +14,11 @@ const WeatherSearch = ({ searchWeather }) => {
         onChange={setLocation}
       />
       <View style={styles.buttonWrapper}>
-        <Button title="Search" onPress={() => searchWeather(location)} />
+        <Button
+          title="Search"
+          onPress={() => searchWeather(location)}
+          style={styles.buttonStyle}
+        />
       </View>
     </View>
   );
@@ -25,5 +29,13 @@ export default WeatherSearch;
 const styles = StyleSheet.create({
   buttonWrapper: {
     marginTop: 20,
+    marginBottom: 20,
+    justifyContent: "center",
+  },
+  buttonStyle: {
+    borderRadius: 10,
+    height: 40, 
+    backgroundColor: "#007bff",
+    paddingHorizontal: 20,
   },
 });
