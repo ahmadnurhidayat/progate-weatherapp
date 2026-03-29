@@ -1,14 +1,16 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 
-const WeatherInfo = ({
-  temp,
-  weatherDesc,
-  visibility,
-  windSpeed,
-  name,
-  icon,
-}) => {
+type Props = {
+  temp: number;
+  weatherDesc: string;
+  visibility: number;
+  windSpeed: number;
+  name: string;
+  icon: string;
+};
+
+const WeatherInfo = ({ temp, weatherDesc, visibility, windSpeed, name, icon }: Props) => {
   return (
     <View style={styles.marginTop20}>
       <Text style={styles.text}>The weather of {name}</Text>
@@ -18,8 +20,7 @@ const WeatherInfo = ({
           source={{ uri: `https://openweathermap.org/img/w/${icon}.png` }}
           style={styles.weatherIcon}
         />
-        <Text style={[styles.text, styles.bold]}>Clouds </Text>
-        <Text style={styles.text}>{weatherDesc}</Text>
+        <Text style={[styles.text, styles.bold]}>{weatherDesc}</Text>
       </View>
 
       <View style={[styles.rowContainer, styles.marginTop20]}>
@@ -41,14 +42,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   marginLeft15: {
-    marginLef: 15,
+    marginLeft: 15,
   },
   text: {
     textAlign: "center",
     fontSize: 16,
   },
   bold: {
-    fontWeight: 700,
+    fontWeight: "700",
   },
   rowContainer: {
     flexDirection: "row",
