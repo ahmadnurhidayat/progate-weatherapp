@@ -1,21 +1,23 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import React from "react";
 
-const CustomTextInput = ({
-  onChange,
-  multiline,
-  placeholder,
-  numberOfLines,
-  textValue,
-}) => {
+type Props = {
+  onChange: (text: string) => void;
+  multiline?: boolean;
+  placeholder?: string;
+  numberOfLines?: number;
+  textValue: string;
+};
+
+const CustomTextInput = ({ onChange, multiline, placeholder, numberOfLines, textValue }: Props) => {
   return (
-    <View styles={styles.container}>
+    <View style={styles.container}>
       <TextInput
         onChangeText={onChange}
         multiline={multiline}
         placeholder={placeholder}
         numberOfLines={numberOfLines}
-        defaultValue={textValue}
+        value={textValue}
         style={styles.input}
       />
     </View>
